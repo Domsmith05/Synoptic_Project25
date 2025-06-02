@@ -113,15 +113,15 @@
 }
 
 .home_content p {
-    flex: 0 1 40%;
+    flex: 0 1 60%;
     max-width: 420px; 
     margin-left: 140px;
-    font-size: 12pt;
+    font-size: 14.5pt;
     line-height: 1.6;
 }
 
 .home_img {
-    flex: 1 1 35%;
+    flex: 1 1 30%;
     max-width: 600px;
     width: 100%;
     height: auto;
@@ -131,3 +131,78 @@
     margin-left: 60px;
 }
 
+.login_body {
+    margin: 0;
+    background-image: url("/assets/4156248.jpg");
+    background-size: 2550px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.login_main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.login_form {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+}
+
+.login_form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #1b4332;
+}
+
+.login_form input[type="text"],
+.login_form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.login_form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #16bdda;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login_form input[type="submit"]:hover {
+    background-color: #001aff;
+    transform: translateY(-2px);
+}
+
+.login_title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #000000;
+}
+
+.textarea {
+    width: 100%;
+    margin: 10px 0px 10px 0px;
+}
