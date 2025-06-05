@@ -5,6 +5,7 @@ const path = require('path');
 const app = express();
 const port = 4000;
 const {Pool} = require('pg');
+const fs = require("fs").promises; // Using these promises for async json file stuff 
 
 const pool = new Pool({
    user: process.env.DB_USER,
@@ -25,6 +26,7 @@ pool.query('SELECT NOW()', (err, res) => {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json());
 
 //
 // Do whatever you want with this, it's just a set-up of files and folders 
@@ -35,6 +37,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.listen(port, () => {
    console.log(`Supposedly listening on port ${port} - don't trust it.`);
 });
+
+
+app.post("/pageData", async (req, res) => {
+   try {
+      const theData = await fs.readFile("pageData.json", "utf8");
+      res.json(JSON.parse(theData));
+   } catch {
+      console.error("Error reading pageData.json");
+      res.status(500).send("Error reading page data.");
+   }
+});
+
 
 
 app.get("/", (req, res) => {

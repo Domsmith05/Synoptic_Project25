@@ -1,5 +1,27 @@
 {
-   "name": "mv_waterworks_webapp",
-   "version": "1.0.0",
-   "description": "Synoptic Project web app"
+   "pages": [
+      {
+         "name": "Home",
+         "path": "/",
+         "title": "Synoptic Project Home",
+         "content": []
+      },
+      {
+         "name": "About Us",
+         "path": "/about",
+         "title": "About Synoptic Project",
+         "content": [
+            "MV Watrerworks is a community focused project based in Makers Valley, Johannesburg. Our mission is to help monitor water pressure accross diffrent neighbourhoods to detect leaks early and reduce water waste",
+            "This platform allows users to check water pressure data from different locations and view historical pressure records. By making this information accessable, we hope to empower the community to identify potenital issues quickly and take preventive actions",
+            "By sharing this information, we want to help the community spot problems early and fix them faster"
+
+         ]
+      },
+      {
+         "name": "",
+         "path": "",
+         "title": "",
+         "content": []
+      }
+   ]
 }
