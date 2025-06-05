@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>MV Waterworks</title>
+</head>
+<body class="report_body">
+    <header class="header">
+        <div class="header_wrapper">
+            <div class="header_logo_box">
+                <a href="index.html">
+                    <img src="assets/MVWATERWORKS.png" class="header_logo" alt="Logo"/>
+                </a>
+            </div>
+            <div class="header_title_box">
+                <h1 class="header_title">MV Waterworks</h1>
+            </div>
+            <nav class="header_nav">
+                <ul class="nav_bar">
+                    <li class="nav_button"><a href="index.html">Home</a></li>
+                    <li class="nav_button"><a href="report.html">Report</a></li>
+                    <li class="nav_button"><a href="map.html">Map</a></li>
+                    <li class="nav_button"><a href="history.html">History</a></li>
+                    <li class="nav_button"><a href="aboutUs.html">About Us</a></li>
+                    <li class="nav_button"><a href="signup.html">Sign-Up</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="report_main">
+        <section>
+            <form method="post" action="/report" class="report_form">
+                <h3 class="report_title">Submit a Report</h3> 
+                <fieldset>
+                    <legend>Report Form</legend>
+                    
+                    <label for="location">Location of Issue</label>
+                    <input type="text" name="location" required>
+
+                    <label for="date">Date</label>
+                    <input type="date" name="date" required>
+
+                    <label for="description">Description of the Problem</label>
+                    <textarea name="description" rows="5" cols="33" placeholder="Describe what you saw..." required></textarea>
+
+                    <input type="submit" value="Submit Report">
+                </fieldset>
+            </form>
+        </section> 
+    </main>
+</body>
+</html>
