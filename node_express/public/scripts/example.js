@@ -5,14 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
             const dataDisplay = document.getElementById("dataDisplay");
 
             // Create HTML elements to display the JSON data
-            const nameElement = document.createElement("p");
+            const nameElement = document.createElement(".p1");
             nameElement.textContent = "Name: " + data.name;
 
-            const ageElement = document.createElement("p");
-            ageElement.textContent = "Age: " + data.age;
+            const ageElement = document.querySelector(".p2");
+            ageElement.textContent = "Version: " + data.age;
 
-            const cityElement = document.createElement("p");
-            cityElement.textContent = "City: " + data.city;
+            const cityElement = document.createElement(".p3");
+            cityElement.textContent = "Description: " + data.city;
 
             // Append the elements to the "dataDisplay" div
             dataDisplay.appendChild(nameElement);
