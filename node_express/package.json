@@ -1,14 +1,15 @@
 {
-  "name": "mv_waterworks_webapp",
+  "name": "synoptic_project25",
   "version": "1.0.0",
-  "description": "Synoptic Project web app",
-  "main": "app.js",
+  "description": "",
+  "main": "app.js", 
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js", 
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "SynopticGroup13",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0",
@@ -16,6 +17,6 @@
     "pg": "8.16.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^2.0.15" 
   }
 }
