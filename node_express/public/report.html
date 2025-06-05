@@ -37,16 +37,13 @@
             <form method="post" action="/report" class="report_form">
                 <h3 class="report_title">Submit a Report</h3> 
                 <fieldset>
-                    <legend>Report Form</legend>
-                    
-                    <label for="location">Location of Issue</label>
-                    <input type="text" name="location" required>
+                    <legend>Report Form</legend
+                                           
+                    <input type="text" name="location" placeholder="Enter location..." required>
 
-                    <label for="date">Date</label>
                     <input type="date" name="date" required>
 
-                    <label for="description">Description of the Problem</label>
-                    <textarea name="description" rows="5" cols="33" placeholder="Describe what you saw..." required></textarea>
+                    <textarea name="description" rows="5" cols="33" placeholder="Describe the problem..." required></textarea>
 
                     <input type="submit" value="Submit Report">
                 </fieldset>
