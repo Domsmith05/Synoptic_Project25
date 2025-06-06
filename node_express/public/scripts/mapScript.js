@@ -27,9 +27,10 @@ var MakersValleyPolygon = L.polygon([
    weight: 1,
    opacity: 0.8,
    fillColor: '#00ffff',
-   fillOpacity: 0.15
+   fillOpacity: 0.15,
+   alt: 'Maker\'s Valley Region'
 }).addTo(map);
-MakersValleyPolygon.bindPopup('Maker\'s Valley Region').openPopup();
+MakersValleyPolygon.bindPopup('Maker\'s Valley Region')//.openPopup();
 
 // Border of the "Extension" Area
 var ExtensionPolygon = L.polygon([
@@ -42,20 +43,44 @@ var ExtensionPolygon = L.polygon([
    weight: 1,
    opacity: 0.8,
    fillColor: '#00ffff',
-   fillOpacity: 0.15
+   fillOpacity: 0.15,
+   alt: 'Extension Region'
 }).addTo(map);
-ExtensionPolygon.bindPopup('Extension Region').openPopup();
+ExtensionPolygon.bindPopup('Extension Region')//.openPopup();
+
+// Testing an attempt to add a panel for displaying the water data - override with your code when you want
+var waterInfo = L.control();
+
+waterInfo.onAdd = function (map) {
+    this._div = L.DomUtil.create('div', 'info');
+    this.update();
+    return this._div;
+   }
+
+waterInfo.update = function (props) {
+    this._div.innerHTML = '<h4>Water Monitor Information</h4>' +  (props ? 
+      props.pressure : 'Click on a water monitor');
+}
+
+waterInfo.addTo(map);
 
 // Markers for the location of devices
 //Original Location: -26.2041, 28.0473 - changed to be inside Maker's Valley
 const device1Pointer = L.marker([-26.1901, 28.0670]).addTo(map);
-device1Pointer.bindPopup('Water monitor 1').openPopup();
-device1Pointer.on('click', function() {
-   alert('Monitor 1 data here in an alert?');
-   
+device1Pointer.bindPopup('Water monitor 1')
+device1Pointer.on('click', function(e) {
+   //device1Pointer.setContent("Water Data! at " + e.latlng.toString());
+   alert("Water Data! at " + e.latlng.toString());
+   device1Pointer.openPopup();
 });
 const device2Pointer = L.marker([-26.2001, 28.0660]).addTo(map);
-device2Pointer.bindPopup('Water Monitor 2').openPopup();
+device2Pointer.bindPopup('Water Monitor 2')//.openPopup();
 
 const device3Pointer = L.marker([-26.1955, 28.0690]).addTo(map);
-device3Pointer.bindPopup('Water Monitor 3').openPopup();
+device3Pointer.bindPopup('Water Monitor 3')//.openPopup();
+
+const device4Pointer = L.marker([-26.1900, 28.0810]).addTo(map);
+device4Pointer.bindPopup('Water Monitor 4')//.openPopup();
+
+const device5Pointer = L.marker([-26.1889, 28.0803]).addTo(map);
+device5Pointer.bindPopup('Water Monitor 5')//.openPopup();
