@@ -4,7 +4,12 @@
          "name": "Home",
          "path": "/",
          "description": "Synoptic Project Home",
-         "content": []
+         "content": [
+            "About Makers Valley",
+            "Makers Valley is an informal name for a cluster of suburbs located on the eastern edge of inner-city Johannesburg. Stretching from New Doornfontein to Bezuidenhout Valley, the area includes Bertrams, Judith’s Paarl, Troyeville, and Lorentzville. Home to around 46,000 residents (as of 2020*), this historically under-resourced area is known for its cultural richness and community spirit. While it has faced challenges like urban decline and high unemployment, it is also a place of resilience and transformation.",
+            "In recent years, Makers Valley has begun to experience signs of renewal, driven by the growing presence of social and creative enterprises. The name “Makers Valley” has been embraced by a community of local entrepreneurs, artists, artisans, designers, poets, urban gardeners, and youth leaders who live and work here. This vibrant community is building a strong identity rooted in creativity and collaborative placemaking, emerging as a hub for innovation, craft, and social impact.",
+            "In Johannesburg water is distributed through a centralised pipe network to provide water to all taps in the area and is wholly reliant on pumps. Due to the reliance of the system on pumps, the water system is closely linked to the electricity distribution system which suffers from both scheduled (i.e. load shedding) and unscheduled power outages. The shutdown of water also exacerbates the deterioration of pipes due to the absence of water pressure to support them. The failure of systems and water cutoffs have left homes and businesses without water for up to three weeks."
+         ]
       },
       {
          "name": "About Us",
@@ -14,7 +19,6 @@
             "MV Waterworks is a community focused project based in Makers Valley, Johannesburg. Our mission is to help monitor water pressure accross diffrent neighbourhoods to detect leaks early and reduce water waste",
             "This platform allows users to check water pressure data from different locations and view historical pressure records. By making this information accessable, we hope to empower the community to identify potenital issues quickly and take preventive actions",
             "By sharing this information, we want to help the community spot problems early and fix them faster"
-
          ]
       },
       {

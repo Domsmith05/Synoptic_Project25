@@ -36,16 +36,3 @@ h1
     color: #777;
 }
 
-table {
-   width: 80%;
-   border-radius: 3px;
-   border: solid 1px #000;
-   margin: 20px auto;
-   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-th, td {
-    padding: 8px;
-    text-align: center;
-    border: solid 1px #000;
-}
