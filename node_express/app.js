@@ -6,6 +6,8 @@ const app = express();
 const port = 4000;
 const {Pool} = require('pg');
 const fs = require("fs").promises; // Using these promises for async json file stuff 
+const dirname = require('path').dirname;
+
 
 const pool = new Pool({
    user: process.env.DB_USER,

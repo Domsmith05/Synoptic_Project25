@@ -79,8 +79,16 @@ device2Pointer.bindPopup('Water Monitor 2')//.openPopup();
 const device3Pointer = L.marker([-26.1955, 28.0690]).addTo(map);
 device3Pointer.bindPopup('Water Monitor 3')//.openPopup();
 
-const device4Pointer = L.marker([-26.1900, 28.0810]).addTo(map);
+const device4Pointer = L.marker([-26.1945, 28.0758]).addTo(map);
 device4Pointer.bindPopup('Water Monitor 4')//.openPopup();
 
-const device5Pointer = L.marker([-26.1889, 28.0803]).addTo(map);
+const device5Pointer = L.marker([-26.1900, 28.0810]).addTo(map);
 device5Pointer.bindPopup('Water Monitor 5')//.openPopup();
+
+const device6Pointer = L.marker([-26.1889, 28.0803]).addTo(map);
+device6Pointer.bindPopup('Water Monitor 6')//.openPopup();
+
+
+
+
+//Idea for map data - use database to select all the entries for each device and then find most recent one for each and use those for the map data

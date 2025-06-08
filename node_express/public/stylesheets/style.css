@@ -1,3 +1,7 @@
+body {
+    font-family: sans-serif;
+}
+
 .header {
     background-color: #127a88;
     color: #fff;
@@ -114,6 +118,13 @@
     margin-left: 140px;
     font-size: 14.5pt;
     line-height: 1.6;
+}
+
+.home_content p.p2 {
+    flex: 0 1 85%;
+    max-width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .home_img {
