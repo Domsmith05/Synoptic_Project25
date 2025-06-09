@@ -65,6 +65,7 @@ app.listen(port, () => {
 
 app.post("/pageData", async (req, res) => {
    try {
+      //console.log("Received request for page data...");
       const theData = await fs.readFile("pageData.json", "utf8");
       res.json(JSON.parse(theData));
    } catch {

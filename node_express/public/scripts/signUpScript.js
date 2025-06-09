@@ -1,4 +1,6 @@
+
 document.addEventListener("DOMContentLoaded", function () {
+   //console.log("DOM fully loaded and parsed");
    fetch('/pageData', {method: 'POST',
          headers: {"Content-Type": "application/json"},
       body: JSON.stringify({}) // Empty object as body
@@ -12,14 +14,14 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .then(data => {
         
-         var loginMain = document.querySelector(".login_main")[0];
-         
+         var loginMain = document.querySelector(".login_main");
+         //var loginMain = document.getElementsByClassName("login_main")[0];
 
          if (!loginMain) {
             throw new Error("Could not find login form or sign up form elements");
          }
 
-         var signUpPage = data.pages.find(pages => pages.name === "Sign Up");
+         const signUpPage = data.pages.find(pages => pages.name === "Sign Up");
          if (!signUpPage) {
             throw new Error("Could not find signUp page data");
          }
@@ -28,15 +30,16 @@ document.addEventListener("DOMContentLoaded", function () {
          var legend1 = loginMain.querySelector(".legend1");
          var l1 = loginMain.querySelector(".label1");
          var l2 = loginMain.querySelector(".label2");
-         var l3 = loginMain.querySelector(".label3");
+         var l3_1 = loginMain.querySelector(".label3");
          var legend2 = loginMain.querySelector(".legend2");
          var l4 = loginMain.querySelector(".label4");
          var l5 = loginMain.querySelector(".label5");
+         var l3_2 = loginMain.querySelector(".login_form .label3");
          var ta1 = loginMain.querySelector(".textarea");
          var h3_2 = loginMain.querySelector(".login_title");
          var h4 = loginMain.querySelector("form h4");
 
-         if (!h3_1 || !legend1 || !l1 || !l2 || !l3 || !legend2 || !l4 || !l5 || !ta1 || !h3_2 || !h4) {
+         if (!h3_1 || !legend1 || !l1 || !l2 || !l3_1 || !legend2 || !l4 || !l5 || !l3_2 || !ta1 || !h3_2 || !h4) {
             throw new Error("Could not find one or more elements with specified classes");
          }
 
@@ -44,10 +47,11 @@ document.addEventListener("DOMContentLoaded", function () {
          legend1.textContent = signUpPage.content[1];
          l1.textContent = signUpPage.content[2];
          l2.textContent = signUpPage.content[3];
-         l3.textContent = signUpPage.content[4];
+         l3_1.textContent = signUpPage.content[4];
          legend2.textContent = signUpPage.content[5];
          l4.textContent = signUpPage.content[6];
          l5.textContent = signUpPage.content[7];
+         l3_2.textContent = signUpPage.content[4];
          ta1.textContent = signUpPage.content[8];
          h3_2.textContent = signUpPage.content[9];
          h4.textContent = signUpPage.content[10];
