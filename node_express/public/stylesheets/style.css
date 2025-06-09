@@ -279,13 +279,36 @@ th, td {
         opacity: 0;
         display: block;
         overflow: hidden;
-        transition: 0.5s;
-        height: 0;
+        transition-duration: 0.5s;
+        height: 0px;
+        position: static;
+        /*padding-top: 200px;
+        padding-left: 30px;*/
+        padding: 5px;
+        background-color: #127a88;
+        border: 2px solid #000;
+        /*color: #000 !important;*/
+        
+    }
+
+
+    button {
+        color: #fff;
+        background: none;
+        border: none;
+        padding: 1%;
+        outline: none;
+        z-index: 2;
+    }
+
+    button:hover {
+        color: #000;
     }
 
     .show_nav {
         opacity: 1;
         height: 330px;
+        
     }
 
     nav ul li {
@@ -298,7 +321,7 @@ th, td {
         display: block;
         text-align: center;
         padding: 10px;
-        color: #ffffff;
+        /*color: #ffffff;*/
         text-decoration: none;
     }
     nav {
