@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
          if (!aboutPage) {
             throw new Error("Could not find About page data"); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
          }
-            
+
          !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
          aboutPage.content.forEach(text => {
          const p = document.createElement("p");
@@ -120,6 +120,14 @@ document.addEventListener("DOMContentLoaded", function () {
          });
       })
       .catch(error => console.error("Error fetching JSON data:", error));
+
+
+      // Josh's Foo Bars
+      
+      document.querySelector("#menu").addEventListener('click', () => {
+         console.log("Menu icon clicked");
+         document.querySelector(".nav_bar").classList.toggle("show_nav");
+      });
 });
 */
 

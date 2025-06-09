@@ -28,4 +28,11 @@ document.addEventListener("DOMContentLoaded", function () {
          });
       })
       .catch(error => console.error("Error fetching JSON data:", error));
+
+      // Josh's Foo Bars
+      
+      document.querySelector("#menu").addEventListener('click', () => {
+         console.log("Menu icon clicked");
+         document.querySelector(".nav_bar").classList.toggle("show_nav");
+      });
 });

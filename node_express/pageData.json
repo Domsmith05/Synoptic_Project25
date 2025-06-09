@@ -45,7 +45,19 @@
          "name": "Sign Up",
          "path": "/signup.html",
          "description": "",
-         "content": []
+         "content": [
+            "Sign Up To Our Newsletter",
+            "Contact Form",
+            "First Name",
+            "Last Name",
+            "Email",
+            "Sign In",
+            "Username",
+            "Password",
+            "Comment",
+            "Sign In", 
+            "(For Government / Council Accounts)"
+         ]
       }
    ]
 }

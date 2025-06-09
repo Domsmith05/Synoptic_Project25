@@ -43,43 +43,12 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(error => console.error("Error fetching JSON data:", error));
       
       // Josh's Foo Bars
-      
-      const ham_ico = document.querySelector("#menu");
-      //const ham_ico = document.querySelector("div a i");
-      //const ham_ico = document.querySelector(".fa fa-bars");
-      
-      function show_nav() {
-         const navBar = document.querySelector(".nav_bar");
-         if (navBar) {
-            navBar.classList.toggle("show_nav");
-            //navBar.style.opacity = "1";
-         }
-      
-      }
-      /*
-      const currentPageNav = document.querySelector("#nav0");
-      if (currentPageNav) {
-         currentPageNav.classList.add("active");
-      }
-      */
-/*     
-Hey, just booked the library 01.43 at 10-12 tomorrow, but it won't let me book 12-2 also which
- if we are getting there at 11 it might be needed to get both slots - so would you mind hopping
-  on booker and booking the slot directly after mine?
-*/
 
       document.querySelector("#menu").addEventListener('click', () => {
          console.log("Menu icon clicked");
          document.querySelector(".nav_bar").classList.toggle("show_nav");
       });
      
-      /*
-      if (ham_ico) {
-         ham_ico.addEventListener("click", show_nav);
-      } else {
-         console.error("Menu icon not found");
-      }
-         */
 });
 
 

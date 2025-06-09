@@ -100,6 +100,22 @@ body {
     background-color: #71949b;
 }
 
+form {
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.sign_up_form {
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+
 .home_page_title {
     font-weight: 700;
     font-size: 24pt;
@@ -174,7 +190,8 @@ body {
     width: 100%;
 }
 
-.login_form {
+.login_form,
+.sign_up_form {
     background-color: #fff;
     padding: 30px 40px;
     border-radius: 10px;
@@ -183,7 +200,8 @@ body {
     width: 100%;
 }
 
-.login_form label {
+.login_form label,
+.sign_up_form label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
@@ -191,7 +209,9 @@ body {
 }
 
 .login_form input[type="text"],
-.login_form input[type="password"] {
+.login_form input[type="password"], 
+.sign_up_form input[type="text"],
+.sign_up_form input[type="password"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -201,7 +221,8 @@ body {
     box-sizing: border-box;
 }
 
-.login_form input[type="submit"] {
+.login_form input[type="submit"],
+.sign_up_form input[type="submit"] {
     width: 100%;
     padding: 10px;
     background-color: #16bdda;
@@ -214,12 +235,14 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.login_form input[type="submit"]:hover {
+.login_form input[type="submit"]:hover,
+.sign_up_form input[type="submit"]:hover {
     background-color: #001aff;
     transform: translateY(-2px);
 }
 
-.login_title {
+.login_title,
+.signup_title {
     text-align: center;
     margin-bottom: 20px;
     font-size: 1.8rem;

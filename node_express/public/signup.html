@@ -12,7 +12,7 @@
     <header class="header">
     <div class="header_wrapper">
         <div class="header_logo_box">
-            <a href="">
+            <a href="index.html">
                 <img src="assets/MVWATERWORKS.png" class="header_logo" alt="Logo"/>
             </a>
         </div>
@@ -45,26 +45,36 @@
     </div>
     </header>
     <main class="login_main">
-          <section>
-            <form method="post" action="/newsletter" class="login_form">
-                <h3 class="login_title">Sign Up To Our Newsletter</h3> 
+        <section>
+            <form method="post" action="/newsletter" class="sign_up_form">
+                <h3 class="signup_title"></h3> 
                 <fieldset>
-                    <legend>Contact Form</legend>
-                    <label for="name">First Name</label>
-                    <input type="text" name="name" required>
-                    <label for="name">Last Name</label>
-                    <input type="text" name="last_name" required>
-                    <label for="email">Email</label>
-                    <input type="text" name="email" id="" required>
-                    <label for="username">Username (Optional)</label>
-                    <input type="text" name="username">
-                    <label for="password">Password (Optional)</label>
-                    <input type="password" name="password">
-                    <textarea name="message" class="textarea">Comment</textarea>
-                    <input type="submit" id="">
+                    <legend class="legend1"></legend>
+                    <label class="label1" for="name"></label>
+                    <input type="text" name="name" required id="name">
+                    <label class="label2" for="last_name"></label>
+                    <input type="text" name="last_name" required id="last_name">
+                    <label class="label3" for="email1"></label>
+                    <input type="text" name="email" id="email1" required>
+                    <textarea name="message" class="textarea"></textarea>
+                    <input type="submit" id="submit1">
                 </fieldset>
             </form>
-          </section> 
+            <form method="post" action="/login" class="login_form">
+                <h3 class="login_title"></h3> 
+                <h4></h4>
+                <fieldset>
+                    <legend class="legend2"></legend>
+                    <label class="label4" for="username"></label>
+                    <input type="text" name="username" id="username" required>
+                    <label class="label5" for="password"></label>
+                    <input type="password" name="password" id="password" required>
+                    <label class="label3" for="email2"></label>
+                    <input type="text" name="email" id="email2" required>
+                    <input type="submit" id="submit2">
+                </fieldset>
+            </form>
+        </section> 
     </main>
     
 </body>
