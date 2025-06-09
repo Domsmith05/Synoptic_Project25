@@ -6,6 +6,7 @@ const app = express();
 const port = 4000;
 const {Pool} = require('pg');
 const fs = require("fs").promises; 
+const {Client} = require('pg');
 
 const pool = new Pool({
    user: process.env.DB_USER,
@@ -15,6 +16,16 @@ const pool = new Pool({
    port: process.env.DB_PORT
 });
 
+const client = new Client({
+   user: process.env.DB_USER,
+   host: process.env.DB_HOST,
+   database: process.env.DB_NAME,
+   password: process.env.DB_PASSWORD,
+   port: process.env.DB_PORT
+});
+
+app.use(express.json());
+
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
     console.error('Connection error', err.stack);
@@ -22,6 +33,12 @@ pool.query('SELECT NOW()', (err, res) => {
     console.log('Connected to DB at:', res.rows[0].now);
   }
 });
+
+client.connect()
+   .then(() => console.log('Connected to the database'))
+   .catch(err => console.error('Connection error', err.stack));
+
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
@@ -59,6 +76,10 @@ app.get("/api/reading/:locationId", async (req, res) => {
     }
 });
 
+// Same as above? but getting "user" data to check if user can log in - if so return a success message (Doesn't do anything yet, will do in V2)
+app.get("/api/login", async (req, res) => {});
+
+
 app.listen(port, () => {
    console.log(`Server listening on port ${port}`);
 });
@@ -73,6 +94,34 @@ app.post("/pageData", async (req, res) => {
       res.status(500).send("Error reading page data.");
    }
 });
+
+
+// Needs testing
+app.post("/api/sendSignUpData", (req, res) => {
+   const {forename, surname, email} = req.body;
+
+   if (!forename || !surname || !email) {
+      return res.status(400).json({ error: "All fields are required." });
+   }
+
+   const queryText = `
+      INSERT INTO synoptic25.signup (forename, surname, email)
+      VALUES ($1, $2, $3)
+      RETURNING *;
+   `;
+
+   pool.query(queryText, [forename, surname, email])
+      .then(result => {
+         res.status(201).json({ message: "Sign-up successful!", data: result.rows[0] });
+      })
+      .catch(err => {
+         console.error("Error inserting sign-up data:", err);
+         res.status(500).json({ error: "Internal server error." });
+      });
+});
+
+
+
 
 app.get("/", (req, res) => {
    console.log("Serving main page...");

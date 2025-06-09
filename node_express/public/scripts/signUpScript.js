@@ -67,8 +67,51 @@ document.addEventListener("DOMContentLoaded", function () {
          document.querySelector(".nav_bar").classList.toggle("show_nav");
       });
      
+      
+      
+      // Needs Testing
+      // Am getting this error:
+      // Connection error Error: connect ECONNREFUSED ::1:5432 at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1615:16)
+
+
+      
+      const form1 = document.getElementsByClassName("sign_up_form")[0];
+      
+      form1.addEventListener("submit", async (event) => {
+         event.preventDefault(); // Prevent the default form submission
+         
+         const forename = document.querySelector("#forename").value.trim();
+         const surname = document.querySelector("#surname").value.trim();
+         const email = document.querySelector("#email").value.trim();
+         
+         if (!forename || !surname || !email) {
+            alert("Please fill in all fields.");
+            return;
+         }
+         
+         try {
+            await sendSignUpData();
+            alert("Sign-up successful!");
+            // Clear form once sent
+            document.querySelector("#signUpForm").reset();
+         } catch (error) {
+            //console.error("Error when sending sign-up data ", error);
+            alert("An error occurred while signing up. Please try again.");
+         }
+      });
+
+      async function sendSignUpData () {
+         const response = await fetch(`/api/sendSignUpData`, {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+               forename: document.querySelector("#forename").value,
+               surname: document.querySelector("#surname").value,
+               email: document.querySelector("#email").value
+            })
+         });
+      }
+
 });
-
-
-
-
