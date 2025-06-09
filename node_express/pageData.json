@@ -19,12 +19,12 @@
          "description": "About Synoptic Project",
          "content": [
             "MV Waterworks is a community-focused project based in Makers Valley, Johannesburg. Our mission is to help monitor water pressure across different neighbourhoods to detect leaks early and reduce water waste.",
-    "This platform allows users to check water pressure data from different locations and view historical pressure records.",
-    "By sharing this information, we want to help the community spot problems early and fix them faster.",
-    "The project is part of the Engineers Without Borders challenge. It focuses on solving real-world problems with sustainable solutions. We're using what we've learned so far to create something useful and meaningful for the community.",
-    "Our goal is not just to build a tool, but to support the community in identifying issues quicker and reducing long-term damage from leaks and outages.",
-    "Sustainability was also a key part of our planning. We considered energy usage, local technical skill levels, and how easily the system can be updated or improved in the future.",
-    "Overall, MV Waterworks is about using simple technology to make a real difference for real people."
+            "This platform allows users to check water pressure data from different locations and view historical pressure records.",
+            "By sharing this information, we want to help the community spot problems early and fix them faster.",
+            "The project is part of the Engineers Without Borders challenge. It focuses on solving real-world problems with sustainable solutions. We're using what we've learned so far to create something useful and meaningful for the community.",
+            "Our goal is not just to build a tool, but to support the community in identifying issues quicker and reducing long-term damage from leaks and outages.",
+            "Sustainability was also a key part of our planning. We considered energy usage, local technical skill levels, and how easily the system can be updated or improved in the future.",
+            "Overall, MV Waterworks is about using simple technology to make a real difference for real people."
          ]
       },
       {
