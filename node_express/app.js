@@ -5,9 +5,7 @@ const path = require('path');
 const app = express();
 const port = 4000;
 const {Pool} = require('pg');
-const fs = require("fs").promises; // Using these promises for async json file stuff 
-const dirname = require('path').dirname;
-
+const fs = require("fs").promises; 
 
 const pool = new Pool({
    user: process.env.DB_USER,
@@ -16,8 +14,6 @@ const pool = new Pool({
    password: process.env.DB_PASSWORD,
    port: process.env.DB_PORT
 });
-
-module.exports = pool;
 
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
@@ -30,16 +26,42 @@ pool.query('SELECT NOW()', (err, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-//
-// Do whatever you want with this, it's just a set-up of files and folders 
-// - you don't even have to use node or express, but if you want to it's now set up.
-// Didn't bother with EJS or any templating engine, as you mentioned not needing it.
-//
+app.get("/api/reading/:locationId", async (req, res) => {
+    const {locationId} = req.params;
 
-app.listen(port, () => {
-   console.log(`Supposedly listening on port ${port} - don't trust it.`);
+    const queryText = `
+        SELECT
+            loc.locname,
+            r.pressure,
+            r.readingtime
+        FROM
+            synoptic25.location AS loc
+        JOIN
+            synoptic25.readings AS r ON loc.location_id = r.location_id
+        WHERE
+            loc.location_id = $1
+        ORDER BY
+            r.readingtime DESC
+        LIMIT 1;
+    `;
+
+    try {
+        const { rows } = await pool.query(queryText, [locationId]);
+
+        if (rows.length > 0) {
+            res.json(rows[0]);
+        } else {
+            res.status(404).json({ error: "No readings found for this location." });
+        }
+    } catch (err) {
+        console.error(`Error fetching data for location ${locationId}:`, err);
+        res.status(500).json({ error: "Internal server error." });
+    }
 });
 
+app.listen(port, () => {
+   console.log(`Server listening on port ${port}`);
+});
 
 app.post("/pageData", async (req, res) => {
    try {
@@ -51,15 +73,12 @@ app.post("/pageData", async (req, res) => {
    }
 });
 
-
-
 app.get("/", (req, res) => {
-   console.log(req.url);
-   res.sendFile(path.join(__dirname, 'public/index.html'), err => {
+   console.log("Serving main page...");
+   res.sendFile(path.join(__dirname, 'public/map.html'), err => {
       if (err) {
          console.error("Error sending file:", err);
          res.status(500).send("Error sending file.");
       }
    });
-   
 });
