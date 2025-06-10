@@ -10,7 +10,6 @@ body {
     align-items: center;
     justify-content: center;
     height: 120px;
-    padding: 0 40px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -243,7 +242,7 @@ form {
 }
 
 .home_content2 p {
-    flex: 0 1 45%;
+    flex: 0 1 100%;
     max-width: 420px; 
     margin-right: 140px;
     font-size: 14.5pt;
@@ -267,6 +266,7 @@ form {
     align-items: center;
     height: 100%;
     width: 100%;
+    margin-top: 10%;
 }
 
 .login_form,
@@ -359,7 +359,7 @@ th, td {
         padding: 2%;
         opacity: 1;
         top: 50px;
-        right: 25px;
+        right: 20px;
         position: absolute;
         transform: translate(20px, 0);
     }
@@ -373,8 +373,15 @@ th, td {
         padding-right: 10px;
     }
 
+    .header_title_box {
+        margin-left: 0%;
+        padding-left: 0%;
+    }
+
     .header_title {
-        font-size: 1.8em !important;
+        font-size: 1.4em !important;
+        margin-top: 20px;
+        margin-right: 0px;
     }
 
     .nav_bar {
@@ -384,15 +391,12 @@ th, td {
         transition-duration: 0.5s;
         height: 0px;
         position: static;
-        /*padding-top: 200px;
-        padding-left: 30px;*/
-        padding: 5px;
+        padding: 0px;
         background-color: #127a88;
         border: 2px solid #000;
-        /*color: #000 !important;*/
-        
+        width: fit-content;
+        min-width: unset;
     }
-
 
     button {
         color: #fff;
@@ -409,21 +413,22 @@ th, td {
 
     .show_nav {
         opacity: 1;
-        height: 330px;
-        
+        margin-top: 120px;
+        height: 220px;
+        padding: 0%;
     }
 
     nav ul li {
         display: block;
-        width: 100%;
-        margin: 10px;
+        width: unset;
+        margin: 0%;
         font-size: small;
+        padding-left: 0%;
     }
     nav li {
         display: block;
         text-align: center;
         padding: 10px;
-        /*color: #ffffff;*/
         text-decoration: none;
     }
     nav {
@@ -435,13 +440,30 @@ th, td {
 
     .home_content p {
         flex: 1 1 100%;
-        max-width: 420px; 
-        margin-left: 100px;
+        max-width: 1420px; 
+        margin-left: 50px;
     }
+
+    .home_content2 p {
+        flex: 1 1 100%;
+        max-width: 1020px; 
+        margin-left: 30px;
+        margin-right: 0px;
+    }
+    
     .home_img {
         margin-left: 0px;
     }
 
+    .home_img2 {
+        margin-left: 50px;
+    }
+    .login_main {
+        margin-top: 20%;
+    }
+
 }
+
+
 
 
