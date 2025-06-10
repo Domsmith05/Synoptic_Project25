@@ -6,6 +6,43 @@ document.addEventListener('DOMContentLoaded', () => {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
+    async function fillReadingsTable() {
+        const tableBody = document.getElementById('data-table-body');
+        if (!tableBody) return;
+
+        try {
+            const response = await fetch('/api/all-readings');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const readings = await response.json();
+            tableBody.innerHTML = '';
+
+            readings.forEach(reading => {
+                const row = document.createElement('tr');
+
+                const locationCell = document.createElement('td');
+                locationCell.textContent = reading.locname;
+                row.appendChild(locationCell);
+
+                const timestampCell = document.createElement('td');
+                timestampCell.textContent = new Date(reading.readingtime).toLocaleString();
+                row.appendChild(timestampCell);
+
+                const pressureCell = document.createElement('td');
+                pressureCell.textContent = reading.pressure;
+                row.appendChild(pressureCell);
+                tableBody.appendChild(row);
+            });
+
+        } catch (error) {
+            console.error("Could not fetch or populate readings table:", error);
+            tableBody.innerHTML = `<tr><td colspan="3">Error loading data.</td></tr>`;
+        }
+    }
+
+    fillReadingsTable();
+
     var MakersValleyPolygon = L.polygon([
         [-26.1917, 28.0620], [-26.1905, 28.0625], [-26.1880, 28.0690],
         [-26.1890, 28.0690], [-26.1874, 28.0738], [-26.1948, 28.0769],
