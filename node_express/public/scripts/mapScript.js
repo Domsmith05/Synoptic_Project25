@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-   /*
+   
    fetch('/pageData', {method: 'POST',
          headers: {"Content-Type": "application/json"},
       body: JSON.stringify({}) // Empty object as body
@@ -91,26 +91,38 @@ document.addEventListener("DOMContentLoaded", function () {
          }
          return response.json();
       })
+
       .then(data => {
-         const div = document.getElementsByClassName("about_content")[0]; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+         const div = document.getElementsByClassName("map_content")[0]; 
          if (!div) {
-            throw new Error("Could not find element with class 'about_content'"); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            throw new Error("Could not find element with class 'map_content'"); 
          }
 
-         const aboutPage = data.pages.find(pages => pages.name === "About Us"); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+         const aboutPage = data.pages.find(pages => pages.name === "Map"); 1
          if (!aboutPage) {
-            throw new Error("Could not find About page data"); !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            throw new Error("Could not find Map page data");
          }
             
-         !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-         aboutPage.content.forEach(text => {
-         const p = document.createElement("p");
-         p.textContent = text;
-         div.appendChild(p);
-         });
+         const h1 = div.querySelector(".headertext");
+         const p1 = div.querySelector(".p1");
+         const th1 = div.querySelector(".th1");
+         const th2 = div.querySelector(".th2");
+         const th3 = div.querySelector(".th3");
+
+         if (!h1 || !p1 || !th1 || !th2 || !th3) {
+            throw new Error("Could not find one or more elements with specified classes");
+         }
+
+         h1.textContent = aboutPage.content[0];
+         p1.textContent = aboutPage.content[1];
+         th1.textContent = aboutPage.content[2];
+         th2.textContent = aboutPage.content[3];
+         th3.textContent = aboutPage.content[4];
       })
       .catch(error => console.error("Error fetching JSON data:", error));
-      */
+      
+
+
       // Josh's Foo Bars
       
       document.querySelector("#menu").addEventListener('click', () => {

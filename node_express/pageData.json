@@ -31,19 +31,16 @@
          "name": "Report",
          "path": "/report.html",
          "description": "",
-         "content": []
-      },
-      {
-         "name": "Map",
-         "path": "/map.html",
-         "description": "Displaying Interactive Map",
-         "content": []
-      },
-      {
-         "name": "History",
-         "path": "/history.html",
-         "description": "Showing past historical data",
-         "content": []
+         "content": [
+            "Submit a Report",
+            "Location",
+            "Enter Location...",
+            "Date",
+            "dd/mm/yyyy",
+            "Description",
+            "Describe the problem...",
+            "Submit Report"
+         ]
       },
       {
          "name": "Sign Up",
@@ -61,6 +58,30 @@
             "Comment",
             "Sign In", 
             "(For Government / Council Accounts)"
+         ]
+      },
+      {
+         "name": "Map",
+         "path": "/map.html",
+         "description": "Displaying Interactive Map",
+         "content": [
+           "Water Pressure Map",
+           "Data Table:",
+           "Location",
+           "Reading's Timestamp",
+           "Pressure (kPa)"
+         ]
+      },
+      {
+         "name": "History",
+         "path": "/history.html",
+         "description": "Showing past historical data",
+         "content": [
+            "Previously recorded water pressures",
+            "Data Table:",
+            "Location",
+            "Reading's Timestamp",
+            "Pressure (kPa)"
          ]
       }
    ]
