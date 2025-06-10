@@ -16,15 +16,6 @@ const pool = new Pool({
    port: process.env.DB_PORT
 });
 
-/*
-const client = new Client({
-   user: process.env.DB_USER,
-   host: process.env.DB_HOST,
-   database: process.env.DB_NAME,
-   password: process.env.DB_PASSWORD,
-   port: process.env.DB_PORT
-});
-*/
 
 app.use(express.json());
 
@@ -36,11 +27,6 @@ pool.query('SELECT NOW()', (err, res) => {
   }
 });
 
-/*
-client.connect()
-   .then(() => console.log('Connected to the database'))
-   .catch(err => console.error('Connection error', err.stack));
-*/
 
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -79,7 +65,6 @@ app.get("/api/reading/:locationId", async (req, res) => {
     }
 });
 
-// Same as above? but getting "user" data to check if user can log in - if so return a success message (Doesn't do anything yet, will do in V2)
 app.get("/api/login", async (req, res) => {});
 
 
@@ -89,7 +74,6 @@ app.listen(port, () => {
 
 app.post("/pageData", async (req, res) => {
    try {
-      //console.log("Received request for page data...");
       const theData = await fs.readFile("pageData.json", "utf8");
       res.json(JSON.parse(theData));
    } catch {
@@ -141,6 +125,39 @@ app.get("/api/all-readings", async (req, res) => {
         res.json(rows);
     } catch (err) {
         console.error("Error fetching all readings:", err);
+        res.status(500).json({ error: "Internal server error." });
+    }
+});
+
+app.get("/api/latest-readings", async (req, res) => {
+    const queryText = `
+        WITH RankedReadings AS (
+            SELECT
+                loc.locname,
+                r.readingtime,
+                r.pressure,
+                ROW_NUMBER() OVER(PARTITION BY r.location_id ORDER BY r.readingtime DESC) as rn
+            FROM
+                synoptic25.readings AS r
+            JOIN
+                synoptic25.location AS loc ON r.location_id = loc.location_id
+        )
+        SELECT
+            locname,
+            readingtime,
+            pressure
+        FROM
+            RankedReadings
+        WHERE
+            rn = 1
+        ORDER BY
+            locname ASC;
+    `;
+    try {
+        const { rows } = await pool.query(queryText);
+        res.json(rows); 
+    } catch (err) {
+        console.error("Error fetching latest readings for table:", err);
         res.status(500).json({ error: "Internal server error." });
     }
 });

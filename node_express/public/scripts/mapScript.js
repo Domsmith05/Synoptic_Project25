@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!tableBody) return;
 
         try {
-            const response = await fetch('/api/all-readings');
+            const response = await fetch('/api/latest-readings');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
