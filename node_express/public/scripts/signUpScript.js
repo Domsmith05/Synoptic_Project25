@@ -66,14 +66,6 @@ document.addEventListener("DOMContentLoaded", function () {
          console.log("Menu icon clicked");
          document.querySelector(".nav_bar").classList.toggle("show_nav");
       });
-     
-      
-      
-      // Needs Testing
-      // Am getting this error:
-      // Connection error Error: connect ECONNREFUSED ::1:5432 at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1615:16)
-
-
       
       const form1 = document.getElementsByClassName("sign_up_form")[0];
       
@@ -90,29 +82,26 @@ document.addEventListener("DOMContentLoaded", function () {
          }
          
          try {
-            await sendSignUpData();
+            await sendSignUpData(formForename, formSurname, formEmail);
             alert("Sign-up successful!");
             // Clear form once sent
-            document.querySelector("#signUpForm").reset();
+            document.querySelector(".sign_up_form").reset();
          } catch (error) {
-            //console.error("Error when sending sign-up data ", error);
+            console.error("Error when sending sign-up data ", error);
             alert("An error occurred while signing up. Please try again.");
          }
       });
 
-      async function sendSignUpData () {
+      async function sendSignUpData (forename, surname, email) {
          const response = await fetch(`/api/sendSignUpData`, {
             method: 'POST',
             headers: {
                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-               /*forename: document.querySelector("#forename").value,
-               surname: document.querySelector("#surname").value,
-               email: document.querySelector("#email").value*/
-               forename: formForename,
-               surname: formSurname,
-               email: formEmail
+               forename: forename,
+               surname: surname,
+               email: email
             })
          });
       }

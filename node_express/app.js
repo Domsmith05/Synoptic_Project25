@@ -99,28 +99,50 @@ app.post("/pageData", async (req, res) => {
 });
 
 
-// Needs testing
-app.post("/api/sendSignUpData", (req, res) => {
-   const {forename, surname, email} = req.body;
+app.post("/api/sendSignUpData", async (req, res) => {
+    const { forename, surname, email } = req.body;
 
-   if (!forename || !surname || !email) {
-      return res.status(400).json({ error: "All fields are required." });
-   }
+    if (!forename || !surname || !email) {
+        return res.status(400).json({ error: "Missing required fields (forename, surname, email)." });
+    }
 
-   const queryText = `
-      INSERT INTO synoptic25.signup (forename, surname, email)
-      VALUES ($1, $2, $3)
-      RETURNING *;
-   `;
+    const queryText = `
+        INSERT INTO synoptic25.signup (fName, lName, email) 
+        VALUES ($1, $2, $3)
+        ON CONFLICT (email) DO NOTHING; 
+    `;
 
-   pool.query(queryText, [forename, surname, email])
-      .then(result => {
-         res.status(201).json({ message: "Sign-up successful!", data: result.rows[0] });
-      })
-      .catch(err => {
-         console.error("Error inserting sign-up data:", err);
-         res.status(500).json({ error: "Internal server error." });
-      });
+    try {
+        await pool.query(queryText, [forename, surname, email]);
+        // Send a success response
+        res.status(201).json({ message: "Signup successful!" });
+    } catch (err) {
+        console.error("Database error on signup:", err);
+        res.status(500).json({ error: "Internal server error." });
+    }
+});
+
+
+app.get("/api/all-readings", async (req, res) => {
+    const queryText = `
+        SELECT
+            loc.locname,
+            r.readingtime,
+            r.pressure
+        FROM
+            synoptic25.readings AS r
+        JOIN
+            synoptic25.location AS loc ON r.location_id = loc.location_id
+        ORDER BY
+            r.readingtime DESC;
+    `;
+    try {
+        const { rows } = await pool.query(queryText);
+        res.json(rows);
+    } catch (err) {
+        console.error("Error fetching all readings:", err);
+        res.status(500).json({ error: "Internal server error." });
+    }
 });
 
 
