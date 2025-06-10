@@ -162,6 +162,26 @@ app.get("/api/latest-readings", async (req, res) => {
     }
 });
 
+app.post("/api/submit-report", async (req, res) => {
+    const {location, description} = req.body;
+    const username = 'User'; 
+    if (!location || !description) {
+        return res.status(400).json({ error: "Location and description are required." });
+    }
+
+    const reportId = `report_${Date.now()}`;
+    const queryText = `
+        INSERT INTO synoptic25.report (report_id, username, repmessage)
+        VALUES ($1, $2, $3);
+    `;
+    try {
+        await pool.query(queryText, [reportId, username, description]);
+        res.status(201).json({ message: "Report submitted successfully!" });
+    } catch (err) {
+        console.error("Database error on report submission:", err);
+        res.status(500).json({ error: "Internal server error." });
+    }
+});
 
 
 

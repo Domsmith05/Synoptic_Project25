@@ -45,6 +45,50 @@ document.addEventListener("DOMContentLoaded", function () {
    })
    .catch(error => console.error("Error fetching JSON data:", error));
 
+   const reportForm = document.querySelector(".report_form");
+
+   if (reportForm) {
+      reportForm.addEventListener("submit", async (event) => {
+         event.preventDefault();
+
+         const location = document.getElementById("location").value.trim();
+         const description = document.getElementById("description").value.trim();
+         
+         if (!location || !description) {
+            alert("Please fill in all fields before submitting.");
+            return;
+         }
+
+         const reportData = {
+            location: location,
+            description: description
+         };
+         
+         try {
+            const response = await fetch('/api/submit-report', {
+               method: 'POST',
+               headers: {
+                  'Content-Type': 'application/json'
+               },
+               body: JSON.stringify(reportData)
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+               alert(result.message);
+               reportForm.reset(); 
+            } else {
+               throw new Error(result.error || 'Failed to submit report.');
+            }
+
+         } catch (error) {
+            console.error("Error submitting report:", error);
+            alert("An error occurred. Please try again.");
+         }
+      });
+   }
+
    document.querySelector("#menu").addEventListener('click', () => {
       console.log("Menu icon clicked");
       document.querySelector(".nav_bar").classList.toggle("show_nav");
