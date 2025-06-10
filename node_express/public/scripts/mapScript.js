@@ -78,8 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
     device6Pointer.on('click', onMarkerClick);
 });
 
-/*
+
 document.addEventListener("DOMContentLoaded", function () {
+   /*
    fetch('/pageData', {method: 'POST',
          headers: {"Content-Type": "application/json"},
       body: JSON.stringify({}) // Empty object as body
@@ -109,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
          });
       })
       .catch(error => console.error("Error fetching JSON data:", error));
-
+      */
       // Josh's Foo Bars
       
       document.querySelector("#menu").addEventListener('click', () => {
@@ -117,4 +118,4 @@ document.addEventListener("DOMContentLoaded", function () {
          document.querySelector(".nav_bar").classList.toggle("show_nav");
       });
 });
-*/
+
