@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
    fetch('/pageData', {method: 'POST',
       headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({}) // Empty object as body
+      body: JSON.stringify({}) 
    })
    .then(response => {
       if (! response.ok) {
@@ -45,4 +45,42 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Menu icon clicked");
       document.querySelector(".nav_bar").classList.toggle("show_nav");
    });
+
+   async function fillReadingsTable() {
+    const tableBody = document.getElementById('data-table-body');
+    if (!tableBody) return;
+
+    try 
+    {
+        const response = await fetch('/api/all-readings');
+        if (!response.ok) 
+            {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const readings = await response.json();
+        tableBody.innerHTML = '';
+
+        readings.forEach(reading => {
+            const row = document.createElement('tr');
+
+            const locationCell = document.createElement('td');
+            locationCell.textContent = reading.locname;
+            row.appendChild(locationCell);
+
+            const timestampCell = document.createElement('td');
+            timestampCell.textContent = new Date(reading.readingtime).toLocaleString();
+            row.appendChild(timestampCell);
+
+            const pressureCell = document.createElement('td');
+            pressureCell.textContent = reading.pressure;
+            row.appendChild(pressureCell);
+            tableBody.appendChild(row);
+        });
+
+    } catch (error) {
+        console.error("Could not fetch or populate readings table:", error);
+        tableBody.innerHTML = `<tr><td colspan="3">Error loading data.</td></tr>`;
+    }
+}
+   fillReadingsTable();
 });
