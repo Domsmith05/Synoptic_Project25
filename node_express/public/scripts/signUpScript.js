@@ -80,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function () {
       form1.addEventListener("submit", async (event) => {
          event.preventDefault(); // Prevent the default form submission
          
-         const forename = document.querySelector("#forename").value.trim();
-         const surname = document.querySelector("#surname").value.trim();
-         const email = document.querySelector("#email").value.trim();
+         const formForename = document.querySelector("#forename").value.trim();
+         const formSurname = document.querySelector("#surname").value.trim();
+         const formEmail = document.querySelector("#email").value.trim();
          
-         if (!forename || !surname || !email) {
+         if (!formForename || !formSurname || !formEmail) {
             alert("Please fill in all fields.");
             return;
          }
@@ -107,9 +107,12 @@ document.addEventListener("DOMContentLoaded", function () {
                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-               forename: document.querySelector("#forename").value,
+               /*forename: document.querySelector("#forename").value,
                surname: document.querySelector("#surname").value,
-               email: document.querySelector("#email").value
+               email: document.querySelector("#email").value*/
+               forename: formForename,
+               surname: formSurname,
+               email: formEmail
             })
          });
       }

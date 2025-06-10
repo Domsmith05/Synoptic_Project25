@@ -16,6 +16,7 @@ const pool = new Pool({
    port: process.env.DB_PORT
 });
 
+/*
 const client = new Client({
    user: process.env.DB_USER,
    host: process.env.DB_HOST,
@@ -23,6 +24,7 @@ const client = new Client({
    password: process.env.DB_PASSWORD,
    port: process.env.DB_PORT
 });
+*/
 
 app.use(express.json());
 
@@ -34,10 +36,11 @@ pool.query('SELECT NOW()', (err, res) => {
   }
 });
 
+/*
 client.connect()
    .then(() => console.log('Connected to the database'))
    .catch(err => console.error('Connection error', err.stack));
-
+*/
 
 
 app.use(express.static(path.join(__dirname, 'public')));
