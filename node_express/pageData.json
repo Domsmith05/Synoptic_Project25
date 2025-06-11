@@ -38,7 +38,8 @@
             "Date",
             "Description",
             "Describe the problem...",
-            "Submit Report"
+            "Submit Report",
+            "Spotted a leak? Or have any other issues you want to raise? Please fill out this short form and you will be helping indentify issues when and where they occur for faster action!"
          ]
       },
       {
@@ -54,7 +55,6 @@
             "Sign In",
             "Username",
             "Password",
-            "Comment",
             "Sign In", 
             "(For Government / Council Accounts)"
          ]
@@ -82,7 +82,8 @@
             "Location",
             "Reading's Timestamp",
             "Pressure (kPa)",
-            "Status"
+            "Status",
+            "The water pressures should be in a rough range of 50kPa to 80kPa, so anything above 80 is high pressure, and anything below 50 is low pressure."
          ]
       }
    ]

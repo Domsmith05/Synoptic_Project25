@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function ()
       const l3 = div.querySelector(".l3");
       const inp3 = div.querySelector("#description");
       const s1 = div.querySelector(".submit_btn");
+      const p1 = div.querySelector(".report_info");
 
       if (!h1 || !l1 || !inp1 || !l2 || !l3 || !inp3 || !s1) 
       {
@@ -49,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function ()
       l3.textContent = aboutPage.content[4];
       inp3.setAttribute ("placeholder", aboutPage.content[5]);
       s1.textContent = aboutPage.content[6];
+      p1.textContent = aboutPage.content[7];
    })
    .catch(error => console.error("Error fetching JSON data:", error));
 
