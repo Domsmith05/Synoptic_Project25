@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function ()
       const th2 = div.querySelector(".th2");
       const th3 = div.querySelector(".th3");
       const th4 = div.querySelector(".th4");
+      const p2 = div.querySelector(".p2");
 
       if (!h1 || !p1 || !th1 || !th2 || !th3) {
          throw new Error("Could not find one or more elements with specified classes");
@@ -43,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function ()
       th2.textContent = aboutPage.content[3];
       th3.textContent = aboutPage.content[4];
       th4.textContent = aboutPage.content[5];
+      p2.textContent = aboutPage.content[6];
    })
    .catch(error => console.error("Error fetching JSON data:", error));
 
