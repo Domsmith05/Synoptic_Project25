@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
          var l4 = loginMain.querySelector(".label4");
          var l5 = loginMain.querySelector(".label5");
          var l3_2 = loginMain.querySelector(".login_form .label3");
+         
          var h3_2 = loginMain.querySelector(".login_title");
          var h4 = loginMain.querySelector("form h4");
 
@@ -51,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
          l4.textContent = signUpPage.content[6];
          l5.textContent = signUpPage.content[7];
          l3_2.textContent = signUpPage.content[4];
+         
          h3_2.textContent = signUpPage.content[8];
          h4.textContent = signUpPage.content[9];
 

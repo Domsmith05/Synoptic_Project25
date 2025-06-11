@@ -55,7 +55,8 @@
             "Sign In",
             "Username",
             "Password",
-            "Sign In - Template for V2", 
+            "Comment",
+            "Sign In", 
             "(For Government / Council Accounts)"
          ]
       },
@@ -81,8 +82,7 @@
             "Location",
             "Reading's Timestamp",
             "Pressure (kPa)",
-            "Severity",
-            "The water pressures should be in a rough range of 50kPa to 80kPa, so anything above 80 is high pressure, and anything below 50 is low pressure."
+            "Status"
          ]
       }
    ]

@@ -19,8 +19,8 @@ document.addEventListener("DOMContentLoaded", function ()
          throw new Error("Could not find main element"); 
       }
 
-      const aboutPage = data.pages.find(pages => pages.name === "History"); 1
-      if (!aboutPage) {
+      const historyPage = data.pages.find(pages => pages.name === "History"); 1
+      if (!historyPage) {
          throw new Error("Could not find History page data");
       }
 
@@ -38,13 +38,13 @@ document.addEventListener("DOMContentLoaded", function ()
          throw new Error("Could not find one or more elements with specified classes");
       }
 
-      h1.textContent = aboutPage.content[0];
-      p1.textContent = aboutPage.content[1];
-      th1.textContent = aboutPage.content[2];
-      th2.textContent = aboutPage.content[3];
-      th3.textContent = aboutPage.content[4];
-      th4.textContent = aboutPage.content[5];
-      p2.textContent = aboutPage.content[6];
+      h1.textContent = historyPage.content[0];
+      p1.textContent = historyPage.content[1];
+      th1.textContent = historyPage.content[2];
+      th2.textContent = historyPage.content[3];
+      th3.textContent = historyPage.content[4];
+      th4.textContent = historyPage.content[5];
+      p2.textContent = historyPage.content[6];
    })
    .catch(error => console.error("Error fetching JSON data:", error));
 
