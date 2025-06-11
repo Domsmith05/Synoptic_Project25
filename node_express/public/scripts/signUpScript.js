@@ -35,11 +35,10 @@ document.addEventListener("DOMContentLoaded", function () {
          var l4 = loginMain.querySelector(".label4");
          var l5 = loginMain.querySelector(".label5");
          var l3_2 = loginMain.querySelector(".login_form .label3");
-         var ta1 = loginMain.querySelector(".textarea");
          var h3_2 = loginMain.querySelector(".login_title");
          var h4 = loginMain.querySelector("form h4");
 
-         if (!h3_1 || !legend1 || !l1 || !l2 || !l3_1 || !legend2 || !l4 || !l5 || !l3_2 || !ta1 || !h3_2 || !h4) {
+         if (!h3_1 || !legend1 || !l1 || !l2 || !l3_1 || !legend2 || !l4 || !l5 || !l3_2 || !h3_2 || !h4) {
             throw new Error("Could not find one or more elements with specified classes");
          }
 
@@ -52,9 +51,8 @@ document.addEventListener("DOMContentLoaded", function () {
          l4.textContent = signUpPage.content[6];
          l5.textContent = signUpPage.content[7];
          l3_2.textContent = signUpPage.content[4];
-         ta1.textContent = signUpPage.content[8];
-         h3_2.textContent = signUpPage.content[9];
-         h4.textContent = signUpPage.content[10];
+         h3_2.textContent = signUpPage.content[8];
+         h4.textContent = signUpPage.content[9];
 
       })
       .catch(error => console.error("Error fetching JSON data:", error));

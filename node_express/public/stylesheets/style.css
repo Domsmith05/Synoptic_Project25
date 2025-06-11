@@ -299,9 +299,11 @@ form {
 }
 
 .login_form input[type="text"],
-.login_form input[type="password"], 
+.login_form input[type="password"],
+.login_form input[type="email"], 
 .sign_up_form input[type="text"],
-.sign_up_form input[type="password"] {
+.sign_up_form input[type="password"], 
+.sign_up_form input[type="email"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;

@@ -20,7 +20,6 @@ const pool = new Pool({
 
 app.use(express.json());
 
-// Test the connection to the database
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
     console.error('Connection error', err.stack);
@@ -34,20 +33,6 @@ pool.query('SELECT NOW()', (err, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
-app.listen(port, () => {
-   console.log(`Server listening on port ${port}`);
-});
-
-app.post("/pageData", async (req, res) => {
-   try {
-      const theData = await fs.readFile("pageData.json", "utf8");
-      res.json(JSON.parse(theData));
-   } catch {
-      console.error("Error reading pageData.json");
-      res.status(500).send("Error reading page data.");
-   }
-});
-
 // This is the endpoint for fetching the latest reading for requested location
 app.get("/api/reading/:locationId", async (req, res) => {
     const {locationId} = req.params;
@@ -56,8 +41,7 @@ app.get("/api/reading/:locationId", async (req, res) => {
         SELECT
             loc.locname,
             r.pressure,
-            r.readingtime,
-            r.status
+            r.readingtime
         FROM
             synoptic25.location AS loc
         JOIN
@@ -83,7 +67,26 @@ app.get("/api/reading/:locationId", async (req, res) => {
     }
 });
 
-// This is the endpointy for sending the signup data to the database
+app.get("/api/login", async (req, res) => {});
+
+
+app.listen(port, () => {
+   console.log(`Server listening on port ${port}`);
+});
+
+app.post("/pageData", async (req, res) => {
+   try {
+      const theData = await fs.readFile("pageData.json", "utf8");
+      res.json(JSON.parse(theData));
+   } catch {
+      console.error("Error reading pageData.json");
+      res.status(500).send("Error reading page data.");
+   }
+});
+
+
+
+// This is the endpoint for sending the signup data to the database
 app.post("/api/sendSignUpData", async (req, res) => {
     const { forename, surname, email } = req.body;
 
@@ -113,8 +116,7 @@ app.get("/api/all-readings", async (req, res) => {
         SELECT
             loc.locname,
             r.readingtime,
-            r.pressure,
-            r.status
+            r.pressure
         FROM
             synoptic25.readings AS r
         JOIN
@@ -139,7 +141,6 @@ app.get("/api/latest-readings", async (req, res) => {
                 loc.locname,
                 r.readingtime,
                 r.pressure,
-                r.status,
                 ROW_NUMBER() OVER(PARTITION BY r.location_id ORDER BY r.readingtime DESC) as rn
             FROM
                 synoptic25.readings AS r
@@ -149,8 +150,7 @@ app.get("/api/latest-readings", async (req, res) => {
         SELECT
             locname,
             readingtime,
-            pressure,
-            status
+            pressure
         FROM
             RankedReadings
         WHERE

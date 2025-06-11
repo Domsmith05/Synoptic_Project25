@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
 
 
-      // Josh's Foo Bars
+      // Hamburger menu functionality
       
       document.querySelector("#menu").addEventListener('click', () => 
     {
@@ -196,4 +196,3 @@ document.addEventListener("DOMContentLoaded", function () {
          document.querySelector(".nav_bar").classList.toggle("show_nav");
       });
 });
-
