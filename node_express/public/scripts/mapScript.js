@@ -1,24 +1,29 @@
-document.addEventListener('DOMContentLoaded', () => {
-
+document.addEventListener('DOMContentLoaded', () => 
+{
     const map = L.map('map').setView([-26.1931, 28.0710], 15);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
+    {
         maxZoom: 19,
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    async function fillReadingsTable() {
+    // Funcvtion to fill the readings table with data from the sql server
+    async function fillReadingsTable() 
+    {
         const tableBody = document.getElementById('data-table-body');
         if (!tableBody) return;
-
-        try {
+        try 
+        {
             const response = await fetch('/api/latest-readings');
-            if (!response.ok) {
+            if (!response.ok) 
+            {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const readings = await response.json();
             tableBody.innerHTML = '';
 
-            readings.forEach(reading => {
+            readings.forEach(reading => 
+            {
                 const row = document.createElement('tr');
 
                 const locationCell = document.createElement('td');
@@ -39,7 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 row.appendChild(statusCell);
             });
 
-        } catch (error) {
+        } 
+        catch (error) 
+        {
             console.error("Could not fetch or populate readings table:", error);
             tableBody.innerHTML = `<tr><td colspan="3">Error loading data.</td></tr>`;
         }
@@ -47,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fillReadingsTable();
 
+    // Marks out makers valley
     var MakersValleyPolygon = L.polygon([
         [-26.1917, 28.0620], [-26.1905, 28.0625], [-26.1880, 28.0690],
         [-26.1890, 28.0690], [-26.1874, 28.0738], [-26.1948, 28.0769],
@@ -57,12 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
     ], { color: 'blue', weight: 1, opacity: 0.8, fillColor: '#00ffff', fillOpacity: 0.15, alt: 'Maker\'s Valley Region' }).addTo(map);
     MakersValleyPolygon.bindPopup('Maker\'s Valley Region');
 
+    // Marks out the extended region
     var ExtensionPolygon = L.polygon([
         [-26.1874, 28.0738], [-26.1948, 28.0769], [-26.1918, 28.0845],
         [-26.1848, 28.0815]
     ], { color: 'orange', weight: 1, opacity: 0.8, fillColor: '#00ffff', fillOpacity: 0.15, alt: 'Extension Region' }).addTo(map);
     ExtensionPolygon.bindPopup('Extension Region');
 
+    // Function to handle marker click events
     async function onMarkerClick(e) {
         const marker = e.target;
         const locationId = marker.db_id;
@@ -70,10 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
         popup.setContent('Loading...');
         marker.openPopup();
 
-        try {
+        try 
+        {
             const response = await fetch(`/api/reading/${locationId}`);
             
-            if (!response.ok) {
+            if (!response.ok) 
+            {
                 const errorData = await response.json();
                 popup.setContent(`Error: ${errorData.error || 'Could not fetch data.'}`);
                 return;
@@ -89,12 +101,15 @@ document.addEventListener('DOMContentLoaded', () => {
          
             popup.setContent(popupContent);
 
-        } catch (err) {
+        } 
+        catch (err) 
+        {
             console.error("Error fetching or processing data:", err);
             popup.setContent('Failed to load data. See console for details.');
         }
     }
 
+    // Create markers for each device location
     const device1Pointer = L.marker([-26.1901, 28.0670]).addTo(map).bindPopup("");
     device1Pointer.db_id = 'Location 1';
     device1Pointer.on('click', onMarkerClick); 
@@ -120,28 +135,33 @@ document.addEventListener('DOMContentLoaded', () => {
     device6Pointer.on('click', onMarkerClick);
 });
 
-
+// Fetches the page data and populates the map content
 document.addEventListener("DOMContentLoaded", function () {
    
    fetch('/pageData', {method: 'POST',
          headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({}) // Empty object as body
+      body: JSON.stringify({}) 
       })
-      .then(response => {
-         if (! response.ok) {
+      .then(response => 
+        {
+         if (! response.ok) 
+        {
             throw new Error(`HTTP error! status: ${response.status}`);
          }
          return response.json();
       })
 
-      .then(data => {
+      .then(data => 
+        {
          const div = document.getElementsByClassName("map_content")[0]; 
-         if (!div) {
+         if (!div) 
+        {
             throw new Error("Could not find element with class 'map_content'"); 
          }
 
          const aboutPage = data.pages.find(pages => pages.name === "Map"); 1
-         if (!aboutPage) {
+         if (!aboutPage) 
+        {
             throw new Error("Could not find Map page data");
          }
             
@@ -152,7 +172,8 @@ document.addEventListener("DOMContentLoaded", function () {
          const th3 = div.querySelector(".th3");
          const th4 = div.querySelector(".th4");
 
-         if (!h1 || !p1 || !th1 || !th2 || !th3) {
+         if (!h1 || !p1 || !th1 || !th2 || !th3) 
+        {
             throw new Error("Could not find one or more elements with specified classes");
          }
 
@@ -169,7 +190,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Josh's Foo Bars
       
-      document.querySelector("#menu").addEventListener('click', () => {
+      document.querySelector("#menu").addEventListener('click', () => 
+    {
          console.log("Menu icon clicked");
          document.querySelector(".nav_bar").classList.toggle("show_nav");
       });

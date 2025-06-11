@@ -8,6 +8,7 @@ const {Pool} = require('pg');
 const fs = require("fs").promises; 
 const {Client} = require('pg');
 
+// Create a new pool for connecting to sql database
 const pool = new Pool({
    user: process.env.DB_USER,
    host: process.env.DB_HOST,
@@ -19,6 +20,7 @@ const pool = new Pool({
 
 app.use(express.json());
 
+// Test the connection to the database
 pool.query('SELECT NOW()', (err, res) => {
   if (err) {
     console.error('Connection error', err.stack);
@@ -32,6 +34,21 @@ pool.query('SELECT NOW()', (err, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
+app.listen(port, () => {
+   console.log(`Server listening on port ${port}`);
+});
+
+app.post("/pageData", async (req, res) => {
+   try {
+      const theData = await fs.readFile("pageData.json", "utf8");
+      res.json(JSON.parse(theData));
+   } catch {
+      console.error("Error reading pageData.json");
+      res.status(500).send("Error reading page data.");
+   }
+});
+
+// This is the endpoint for fetching the latest reading for requested location
 app.get("/api/reading/:locationId", async (req, res) => {
     const {locationId} = req.params;
 
@@ -66,24 +83,7 @@ app.get("/api/reading/:locationId", async (req, res) => {
     }
 });
 
-app.get("/api/login", async (req, res) => {});
-
-
-app.listen(port, () => {
-   console.log(`Server listening on port ${port}`);
-});
-
-app.post("/pageData", async (req, res) => {
-   try {
-      const theData = await fs.readFile("pageData.json", "utf8");
-      res.json(JSON.parse(theData));
-   } catch {
-      console.error("Error reading pageData.json");
-      res.status(500).send("Error reading page data.");
-   }
-});
-
-
+// This is the endpointy for sending the signup data to the database
 app.post("/api/sendSignUpData", async (req, res) => {
     const { forename, surname, email } = req.body;
 
@@ -107,7 +107,7 @@ app.post("/api/sendSignUpData", async (req, res) => {
     }
 });
 
-
+// This is the endpoint for fetching all readings from the database for history page
 app.get("/api/all-readings", async (req, res) => {
     const queryText = `
         SELECT
@@ -131,6 +131,7 @@ app.get("/api/all-readings", async (req, res) => {
     }
 });
 
+// This is the endpoint for fetching the latest readings for all locations for the map page table
 app.get("/api/latest-readings", async (req, res) => {
     const queryText = `
         WITH RankedReadings AS (
@@ -166,6 +167,7 @@ app.get("/api/latest-readings", async (req, res) => {
     }
 });
 
+// This is the endpoint for submitting a report to the database
 app.post("/api/submit-report", async (req, res) => {
     const {location, description} = req.body;
     const username = 'User'; 

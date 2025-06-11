@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(error => console.error("Error fetching JSON data:", error));
 
 
-      // Josh's Foo Bars
+      // Hamburger menu functionality
       
       document.querySelector("#menu").addEventListener('click', () => {
          console.log("Menu icon clicked");

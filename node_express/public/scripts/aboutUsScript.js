@@ -1,8 +1,10 @@
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () 
+{
+   // Dynamically loads the page data from JSON
    fetch('/pageData', {method: 'POST',
          headers: {"Content-Type": "application/json"},
-      body: JSON.stringify({}) // Empty object as body
+      body: JSON.stringify({}) 
       })
       .then(response => {
          if (! response.ok) {
@@ -29,8 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
       })
       .catch(error => console.error("Error fetching JSON data:", error));
 
-      // Josh's Foo Bars
-      
+      // Hamburger menu functionality
       document.querySelector("#menu").addEventListener('click', () => {
          console.log("Menu icon clicked");
          document.querySelector(".nav_bar").classList.toggle("show_nav");

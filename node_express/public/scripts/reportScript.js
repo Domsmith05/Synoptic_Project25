@@ -1,25 +1,31 @@
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () 
+{
 
    fetch('/pageData', {method: 'POST',
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({}) // Empty object as body
    })
-   .then(response => {
-      if (! response.ok) {
+   .then(response => 
+   {
+      if (! response.ok) 
+      {
          throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
    })
 
-   .then(data => {
+   .then(data => 
+   {
       const div = document.getElementsByClassName("report_body")[0]; 
-      if (!div) {
+      if (!div) 
+      {
          throw new Error("Could not find 'report_body' element"); 
       }
 
       const aboutPage = data.pages.find(pages => pages.name === "Report"); 1
-      if (!aboutPage) {
+      if (!aboutPage) 
+      {
          throw new Error("Could not find Report page data");
       }
          
@@ -31,7 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const inp3 = div.querySelector("#description");
       const s1 = div.querySelector(".submit_btn");
 
-      if (!h1 || !l1 || !inp1 || !l2 || !l3 || !inp3 || !s1) {
+      if (!h1 || !l1 || !inp1 || !l2 || !l3 || !inp3 || !s1) 
+      {
          throw new Error("Could not find one or more elements with specified classes");
       }
 
@@ -48,13 +55,15 @@ document.addEventListener("DOMContentLoaded", function () {
    const reportForm = document.querySelector(".report_form");
 
    if (reportForm) {
-      reportForm.addEventListener("submit", async (event) => {
+      reportForm.addEventListener("submit", async (event) => 
+      {
          event.preventDefault();
 
          const location = document.getElementById("location").value.trim();
          const description = document.getElementById("description").value.trim();
          
-         if (!location || !description) {
+         if (!location || !description) 
+         {
             alert("Please fill in all fields before submitting.");
             return;
          }
@@ -64,7 +73,8 @@ document.addEventListener("DOMContentLoaded", function () {
             description: description
          };
          
-         try {
+         try 
+         {
             const response = await fetch('/api/submit-report', {
                method: 'POST',
                headers: {
@@ -75,14 +85,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const result = await response.json();
 
-            if (response.ok) {
+            if (response.ok) 
+            {
                alert(result.message);
                reportForm.reset(); 
             } else {
                throw new Error(result.error || 'Failed to submit report.');
             }
 
-         } catch (error) {
+         } 
+         catch (error) 
+         {
             console.error("Error submitting report:", error);
             alert("An error occurred. Please try again.");
          }

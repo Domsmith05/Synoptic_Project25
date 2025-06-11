@@ -1,6 +1,7 @@
 
-document.addEventListener("DOMContentLoaded", function () {
-
+document.addEventListener("DOMContentLoaded", function () 
+{
+   // Dynamically loads the page data from JSON
    fetch('/pageData', {method: 'POST',
       headers: {"Content-Type": "application/json"},
       body: JSON.stringify({}) 
@@ -22,6 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!aboutPage) {
          throw new Error("Could not find History page data");
       }
+
+      // Creates table to display readings
          
       const h1 = div.querySelector(".history_page_title");
       const p1 = div.querySelector(".p1");
@@ -48,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.querySelector(".nav_bar").classList.toggle("show_nav");
    });
 
+   // Function to fill the readings table with data from the sql server
    async function fillReadingsTable() {
     const tableBody = document.getElementById('data-table-body');
     if (!tableBody) return;
@@ -56,13 +60,15 @@ document.addEventListener("DOMContentLoaded", function () {
     {
         const response = await fetch('/api/all-readings');
         if (!response.ok) 
-            {
+         {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const readings = await response.json();
         tableBody.innerHTML = '';
 
-        readings.forEach(reading => {
+        readings.forEach(reading => 
+         {
             const row = document.createElement('tr');
 
             const locationCell = document.createElement('td');
@@ -84,7 +90,9 @@ document.addEventListener("DOMContentLoaded", function () {
             tableBody.appendChild(row);
         });
 
-    } catch (error) {
+    } 
+    catch (error) 
+    {
         console.error("Could not fetch or populate readings table:", error);
         tableBody.innerHTML = `<tr><td colspan="3">Error loading data.</td></tr>`;
     }
