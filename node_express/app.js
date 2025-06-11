@@ -39,7 +39,8 @@ app.get("/api/reading/:locationId", async (req, res) => {
         SELECT
             loc.locname,
             r.pressure,
-            r.readingtime
+            r.readingtime,
+            r.status
         FROM
             synoptic25.location AS loc
         JOIN
@@ -112,7 +113,8 @@ app.get("/api/all-readings", async (req, res) => {
         SELECT
             loc.locname,
             r.readingtime,
-            r.pressure
+            r.pressure,
+            r.status
         FROM
             synoptic25.readings AS r
         JOIN
@@ -136,6 +138,7 @@ app.get("/api/latest-readings", async (req, res) => {
                 loc.locname,
                 r.readingtime,
                 r.pressure,
+                r.status,
                 ROW_NUMBER() OVER(PARTITION BY r.location_id ORDER BY r.readingtime DESC) as rn
             FROM
                 synoptic25.readings AS r
@@ -145,7 +148,8 @@ app.get("/api/latest-readings", async (req, res) => {
         SELECT
             locname,
             readingtime,
-            pressure
+            pressure,
+            status
         FROM
             RankedReadings
         WHERE

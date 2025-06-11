@@ -68,7 +68,8 @@
            "Data Table:",
            "Location",
            "Reading's Timestamp",
-           "Pressure (kPa)"
+           "Pressure (kPa)",
+           "Status"
          ]
       },
       {
@@ -80,7 +81,8 @@
             "Data Table:",
             "Location",
             "Reading's Timestamp",
-            "Pressure (kPa)"
+            "Pressure (kPa)",
+            "Status"
          ]
       }
    ]

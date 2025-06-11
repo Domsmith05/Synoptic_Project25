@@ -33,6 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 pressureCell.textContent = reading.pressure;
                 row.appendChild(pressureCell);
                 tableBody.appendChild(row);
+
+                const statusCell = document.createElement('td');
+                statusCell.textContent = reading.status;
+                row.appendChild(statusCell);
             });
 
         } catch (error) {
@@ -79,7 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const popupContent = `
                 <b>${data.locname}</b><br>
                 Latest Reading: <b>${data.pressure}</b><br>
-                Last Updated: ${new Date(data.readingtime).toLocaleString()}
+                Last Updated: ${new Date(data.readingtime).toLocaleString()}<br>
+                Status: <b>${data.status}</b><br>
             `;
          
             popup.setContent(popupContent);
@@ -145,6 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
          const th1 = div.querySelector(".th1");
          const th2 = div.querySelector(".th2");
          const th3 = div.querySelector(".th3");
+         const th4 = div.querySelector(".th4");
 
          if (!h1 || !p1 || !th1 || !th2 || !th3) {
             throw new Error("Could not find one or more elements with specified classes");
@@ -155,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function () {
          th1.textContent = aboutPage.content[2];
          th2.textContent = aboutPage.content[3];
          th3.textContent = aboutPage.content[4];
+         th4.textContent = aboutPage.content[5];
       })
       .catch(error => console.error("Error fetching JSON data:", error));
       
