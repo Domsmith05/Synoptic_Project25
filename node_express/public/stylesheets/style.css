@@ -194,6 +194,7 @@ form {
     align-items: flex-start;
     gap: 30px;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .home_content p {
@@ -249,7 +250,7 @@ form {
     align-items: flex-start;
     gap: 30px;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: space-evenly;
 }
 
 .home_content2 p {
@@ -476,7 +477,7 @@ th, td {
     }
 
     .home_img2 {
-        margin-left: 50px;
+        margin-left: 0px;
     }
     .login_main {
         margin-top: 20%;
